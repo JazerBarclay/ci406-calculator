@@ -19,6 +19,30 @@ window.addEventListener("load", function(){
 
         result.textContent = "Result: " + calculateEntropy(yes, no);
     }
+
+
+    let gainButton = document.querySelector("#btnGain");
+    gainButton.onclick = () => {
+        let result = document.querySelector("#lblGainResult")
+
+        let main = document.querySelector("#eMain").value;
+        main = main.replace(/\s+/g, '');
+        let m1 = parseInt(main.split(",")[0]);
+        let m2 = parseInt(main.split(",")[1]);
+
+        
+        let attr = document.querySelector("#eSplit").value;
+        attr = attr.replace(/\s+/g, '');
+        attr = attr.split(",")
+
+        let a = [];
+
+        for(var i = 0; i < attr.length; i+=2) {
+            a.push([ parseInt(attr[i]), parseInt(attr[i+1]) ]);
+        }
+
+        result.textContent = "Attribute Gain: " + calculateGain([m1,m2],a);
+    }
     
 })
 
@@ -43,5 +67,29 @@ function calculateEntropy(yes, no) {
     if (yes == 0 || no == 0) return 0;
     if (yes == no) return 1;
     let res = -(yes/tot)*Math.log2(yes/tot)-(no/tot)*Math.log2(no/tot)
+    return res;
+}
+
+function calculateGain(main, groups) {
+    // Main is an array of 2 values [y+,n-]
+    // Groups are an array of 2 value attributes [ [y+,n-], [y+,n-] ]
+    // With these we can calculate the gain using the entropy thing too :D
+
+    let mainEntropy = calculateEntropy(main[0], main[1]);
+    console.log(`[${main[0]},${main[1]}] => Entropy: ${mainEntropy}`);
+
+    console.log(groups) 
+
+    let res = mainEntropy;
+    let calcGroup = [];
+
+    for (let i = 0; i < groups.length; i++) {
+        calcGroup[i] = ((groups[i][0]+groups[i][1])/(main[0]+main[1]))*calculateEntropy(groups[i][0],groups[i][1]);
+        res = res - calcGroup[i];
+    }
+
+    console.log(calcGroup);
+    console.log(res);
+
     return res;
 }

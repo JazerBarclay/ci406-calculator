@@ -26,7 +26,7 @@
             <h2>Entropy for a datasets and stuff</h2>
             <img src="entropy.png" /><br />
             <form onsubmit="event.preventDefault();">
-                <label id="lblYesVsNo" for="yesVno">Yeah vs Nah: (eg: 4, 3 = [4+,3-])</label>
+                <label id="lblYesVsNo" for="yesVno">Yeah vs Nah: (eg: [4+,3-] => 4,3)</label>
                 <input id="yesVno" type="text" name="YesNo" value="2, 2" />
                 <button id="btnEntropy" style="justify-self: left; margin: 4px 10px 8px 10px;">DO IT!</button>
                 <label id="lblEntropyResult">Result: </label>
@@ -38,23 +38,23 @@
             <h2>Last Boss... GAIN!</h2>
             <img src="gain.png" />
             <form onsubmit="event.preventDefault()">
-                <label id="lblEMain" for="eMain">Main: (eg: dataset has [4+,3-] => 4,3)</label>
+                <label id="lblEMain" for="eMain">Main Dataset: (eg: [4+,3-] => 4,3)</label>
                 <input id="eMain" type="text" name="eMain" value="9, 5" />
-                <label id="lblESplit" for="eSplit">Split: (eg: yes=[6+,2-], no=[3+,3-] => 6,2;3,3)</label>
+                <label id="lblESplit" for="eSplit">Attribute Split: (eg: yes=[6+,2-], no=[3+,3-] => 6,2,3,3)</label>
                 <input id="eSplit" type="text" name="eMain" value="6,2,3,3" />
                 
-                <button id="btnGain" style="justify-self: left; margin: 4px 10px 8px 10px;">It goes to 11</button>
+                <button id="btnGain" style="justify-self: left; margin: 4px 10px 8px 10px;">It goes to 11!</button>
                 <label id="lblGainResult">Result: </label>
             </form>
+
+
         </div>
 
         <div>
-
             <form style="width: 100vw; height: 100%;">
                 <textarea name="scratchpad" id="scratchpad" style="width: 30vw;">Scratchpad
 </textarea>
             </form>
-            
         </div>
 
     </body>
