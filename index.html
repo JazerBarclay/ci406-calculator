@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Homepage</title>
+        <script src="app.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>An Introduction to Artificial Intelligence</h1>
+        <hr />
+        <img src="" />
+
+        <h2>Cumulative Reward Value Thingy</h2>
+        <form onsubmit="event.preventDefault();">
+            <label id="lblGamma" for="gamma">Discount Factor &gamma;: (eg: 0.8)</label>
+            <input id="gamma" type="text" name="Gamma" value="0.8" />
+            <label id="lblReward" for="reward">Immediate Rewards (Start at goal -- eg: 50, 0, 0):</label>
+            <input id="reward" type="text" name="Rewards" value="50,0,0" />
+            <button id="btnGamma" style="justify-self: left; margin: 4px 10px 8px 10px;">Compute!</button>
+            <label id="lblGammaResult">Result: </label>
+        </form>
+
+    </body>
+</html>
