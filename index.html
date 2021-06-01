@@ -7,9 +7,8 @@
     <body>
         <h1>An Introduction to Artificial Intelligence</h1>
         <hr />
-        <img src="" />
 
-        <h2>Cumulative Reward Value Thingy</h2>
+        <h2>Cumulative Reward Value Thingy (for grid with arrows on it)</h2>
         <form onsubmit="event.preventDefault();">
             <label id="lblGamma" for="gamma">Discount Factor &gamma;: (eg: 0.8)</label>
             <input id="gamma" type="text" name="Gamma" value="0.8" />
@@ -17,6 +16,14 @@
             <input id="reward" type="text" name="Rewards" value="50,0,0" />
             <button id="btnGamma" style="justify-self: left; margin: 4px 10px 8px 10px;">Compute!</button>
             <label id="lblGammaResult">Result: </label>
+        </form>
+
+        <h2>Entropy for a datasets and stuff</h2>
+        <form onsubmit="event.preventDefault();">
+            <label id="lblYesVsNo" for="yesVno">Yeah vs Nah: (eg: 4, 3 = [4+,3-])</label>
+            <input id="yesVno" type="text" name="YesNo" value="2, 2" />
+            <button id="btnEntropy" style="justify-self: left; margin: 4px 10px 8px 10px;">DO IT!</button>
+            <label id="lblEntropyResult">Result: </label>
         </form>
 
     </body>
