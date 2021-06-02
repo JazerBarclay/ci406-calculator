@@ -15,7 +15,7 @@ img {
 }
 
 form {
-    display: grid; max-width: 400px;
+    display: grid; max-width: 600px;
 }
 
 form input {
