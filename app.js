@@ -41,7 +41,7 @@ window.addEventListener("load", function(){
             a.push([ parseInt(attr[i]), parseInt(attr[i+1]) ]);
         }
 
-        result.textContent = "Attribute Gain: " + calculateGain([m1,m2],a);
+        result.innerHTML = "Attribute Gain " + calculateGain([m1,m2],a);
     }
     
 })
@@ -76,20 +76,25 @@ function calculateGain(main, groups) {
     // With these we can calculate the gain using the entropy thing too :D
 
     let mainEntropy = calculateEntropy(main[0], main[1]);
-    console.log(`[${main[0]},${main[1]}] => Entropy: ${mainEntropy}`);
-
-    console.log(groups) 
 
     let res = mainEntropy;
     let calcGroup = [];
 
     for (let i = 0; i < groups.length; i++) {
-        calcGroup[i] = ((groups[i][0]+groups[i][1])/(main[0]+main[1]))*calculateEntropy(groups[i][0],groups[i][1]);
-        res = res - calcGroup[i];
+        calcGroup[i] = calculateEntropy(groups[i][0],groups[i][1]);
+        res = res - ((groups[i][0]+groups[i][1])/(main[0]+main[1]))*calcGroup[i];
     }
 
-    console.log(calcGroup);
-    console.log(res);
+    let ret = "";
 
-    return res;
+    ret += "= mainEntropy - SUM(splitTotal/mainTotal*splitEntropy)<br>";
+    ret += `<br>&nbsp;&nbsp; => ${mainEntropy.toFixed(5)}`;
+
+    groups.forEach((item,index) => {
+        ret += ` - ( (${item[0] + item[1]} / ${main[0]+main[1]}) * ${calcGroup[index].toFixed(5)} ) `;
+    });
+
+    ret += `<br>==> ${res}`;
+
+    return ret;
 }
