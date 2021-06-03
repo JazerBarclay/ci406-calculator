@@ -106,8 +106,8 @@ function calculateAverage(ratings) {
 }
 
 function calculatePearsons(userRatings, altRatings) {
-    userAvg = calculateAverage(userRatings);
-    altAvg = calculateAverage(altRatings);
+    let userAvg = calculateAverage(userRatings);
+    let altAvg = calculateAverage(altRatings);
 
     let numerator = 0;
     let denominator = 0;
@@ -135,3 +135,39 @@ function calculatePearsons(userRatings, altRatings) {
     return res;
 }
 
+function calculatePearsonAvg(userRatings, allAltRatings) {
+    let userAvg = calculateAverage(userRatings);
+
+    let allAvg = [];
+    let allP = [];
+    allAltRatings.forEach((user,i) => {
+        allAvg[i] = calculateAverage(user);
+        allP[i] = calculatePearsons(userRatings, user);
+        console.log(allP[i]);
+    });
+
+    let temp = 0;
+    let res = userAvg;
+
+    for (let i = 0; i < allAltRatings.length; i++) {
+        temp += allP[i]*(allAltRatings[i][allAltRatings[i].length]-allAvg[i]);
+        console.log(temp);
+    }
+
+    console.log(temp)
+
+    let temp2 = 0;
+    allP.forEach((p, i) => {
+        temp2+=p;
+    });
+    temp = temp / temp2;
+
+    console.log(res);
+    console.log(temp);
+    console.log(temp2);
+
+    res += temp;
+
+    return res;
+
+}
