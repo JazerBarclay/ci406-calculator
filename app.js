@@ -98,3 +98,40 @@ function calculateGain(main, groups) {
 
     return ret;
 }
+
+function calculateAverage(ratings) {
+    let sum = 0;
+    ratings.forEach((item, index) => {sum+=item});
+    return (sum/ratings.length);
+}
+
+function calculatePearsons(userRatings, altRatings) {
+    userAvg = calculateAverage(userRatings);
+    altAvg = calculateAverage(altRatings);
+
+    let numerator = 0;
+    let denominator = 0;
+
+    for(let i = 0; i < userRatings.length; i++) {
+        numerator += (userRatings[i] - userAvg) * (altRatings[i] - altAvg);
+    }
+
+    let tempUser = 0;
+    for(let j = 0; j < userRatings.length; j++) {
+        tempUser += Math.pow(userRatings[j]-userAvg,2);
+    }
+    tempUser = Math.sqrt(tempUser);
+
+    let tempAlt = 0;
+    for(let i = 0; i < userRatings.length; i++) {
+        tempAlt += Math.pow(altRatings[i]-altAvg,2);
+    }
+    tempAlt = Math.sqrt(tempAlt);
+
+    denominator = tempUser * tempAlt;
+
+    let res = numerator/denominator;
+
+    return res;
+}
+
